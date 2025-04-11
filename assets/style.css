@@ -23,9 +23,13 @@ för webbsidan.
 
 html {
     /*TODO: gör så sidan scrollar mjukt när man klickar på interna länkar (bokmärkslänkar) */
+    scroll-behavior: smooth;
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+
     margin: 0;
     padding: 0;
 
@@ -147,6 +151,7 @@ section {
 /* footer styling */
 
 footer {
+    margin-top: auto;
     background-color: #333;
     color: #fff;
     padding-block: 4rem 4rem;
@@ -320,15 +325,34 @@ img {
 
 /* MOBILE VIEW */
 
-@media (width < 480px) {
+@media (max-width: 480px) {
 
     /* OBS: margins är en hjälpklass - se den användas med sections i HTML-filerna */
 
     .margins {
-        /* FIXME: ändra så det blir mindre marginaler med width här */
+        padding-inline: 1.5rem;
+    }
+
+    .footer-container {
+        display: block;
+    }
+
+    .footer-social {
+
+    }
+
+    .primary-navigation {
+
+        display: none;
+    
+    }
+    
+    .card-layout {
+        display: block;
     }
 
 }
+
 
 
 /* TABLET VIEW */
@@ -488,7 +512,7 @@ img {
 }
 
 
-@media (width < 480px) {
+@media (max-width: 480px) {
 
     /* om mobilvy visa hamburgerknappen */
     .hamburger-button {
