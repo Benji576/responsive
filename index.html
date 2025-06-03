@@ -7,7 +7,7 @@
     <title>Responsive&trade;</title>
 
     <link rel="stylesheet" href="assets/style.css">
-
+    <script src="./assets/hamburger.js" defer></script>
     <!-- TODO: BÖRJA HÄR! med att ladda ner Todo Tree. Gå till Extensions > sök Todo Tree (se panelen till vänster). Härnäst tycker jag du ska bekanta dig med HTML-koden och CSS-koden så du vet vad du har att jobba med -->
 
     <!-- TODO: Ditt uppdrag är att göra sidan helt responsiv. Den ska funka på mobil, padda och dator -->
@@ -15,6 +15,7 @@
     <!-- TODO: ÖVERKURS: Klar med alla todos & fixes? Försök nu göra sidan 100 % accessibility och 100% best practices (Kolla i DevTools > Lighthouse) -->
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <nav class="navigation-bar">
         <div class="flex-layout">
             <img class="main-logo" src="img/m2logo.svg" alt="logo">  <!-- FIXME: något fel på sökvägen-->
@@ -23,7 +24,7 @@
     
         <ul class="primary-navigation" id="primary-navigation">
             <li><a class="nav-link selected" href="#">Home</a></li>
-            <li><a class="nav-link" href="/products">Products</a></li>
+            <li><a class="nav-link" href="./products/index.html">Products</a></li>
             <li><a class="nav-link" href="/about">About us</a></li>
             <li><a class="nav-link" href="/contact">Contact</a></li>
         </ul>
@@ -34,7 +35,11 @@
                 <rect class="line bottom" width="90" height="3" x="5" y="70" rx="2"></rect>    
             </svg>
         </button>
+        
         <!-- TODO: implementera hamburger-knapp med funktionalitet (se hamburger.txt i filer) -->
+
+    
+
     </nav>
     <header class="main-header">
         <h1 class="visually-hidden">A Responsive Future For All</h1> 
@@ -44,11 +49,11 @@
                 <p class="lead">Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, ipsam?</p>
 
                 <!-- TODO: gör så knappen fungerar här nedan: -->
-                <a class="btn-primary" href="products/">Get Started</a>
+                <a class="btn-primary" href="./products/index.html">Get Started</a>
             </div>
         </div>
     </header>
-    <main>
+    <main id="main">
         <!-- TODO: ÖVERKURS: bygg egna cards med rubrik och kanske nån effekt så texten syns bra? Glöm inte att de ska länkas till andra delar på sidan  -->
         <section class="card-container margins">
             <h2>Products</h2>
@@ -84,7 +89,7 @@
         <div class="footer-container margins">
             <div class="footer-info">
                 <div class="flex-layout">
-                    <img class="main-logo" src="m2logo.svg" alt="logo">
+                    <img class="main-logo" src="img/m2logo.svg" alt="logo">
                     <span class="upper color-reversed">Responsive&trade;</span>
                 </div>
             </div>
@@ -107,9 +112,9 @@
                 <span class="footer-title">Follow Us</span>
             
                 <ul class="social-links flex-layout">
-                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="/img/social/Facebook_Logo_(2019).png.webp" alt="Facebook"></a></li>
-                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="/img/social/x.png" alt="Twitter"></a></li>
-                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="/img/social/linked.png" alt="LinkedIn"></a></li>
+                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="./img/social/Facebook_Logo_(2019).png.webp" alt="Facebook"></a></li>
+                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="./img/social/x.png" alt="Twitter"></a></li>
+                    <li><a class="footer-link" href="#" target="_blank"><img class="logo" src="./img/social/linked.png" alt="LinkedIn"></a></li>
                 </ul>
             </div>
         </div>

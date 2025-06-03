@@ -45,7 +45,8 @@ body {
 
 nav.navigation-bar {
     /* FIXME: nav ska följa med när man skrollar ner */
-
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -67,7 +68,7 @@ nav.navigation-bar {
     align-items: center;
     height: 80vh;
 
-    background-image: url('/img/responsive-bg2.webp');
+    background-image: url('../img/responsive-bg2.webp');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -79,6 +80,12 @@ nav.navigation-bar {
     overflow: hidden;
 
     isolation: isolate;
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        background-position: left;
+    }
 }
 
 /* skapa övergång i bakgrunden i hero */
@@ -216,7 +223,7 @@ h3 {
 
 .main-title {
     margin-block: 1rem 0.5rem;
-    font-size: 4rem;
+    font-size: clamp(2rem, 4vw, 4rem);
     line-height: 1;
     white-space: pre-wrap;
 }
@@ -236,6 +243,14 @@ h3 {
 
     column-gap: 3rem;
     column-rule: 1px solid rgb(191, 222, 198);
+}
+
+@media (max-width: 480px) {
+
+
+    .columns {
+        columns: 1;
+    }
 }
 
 .columns p {
@@ -316,8 +331,34 @@ img {
 }
 
 /* TODO: ÖVERKURS: Jag vill att alla utom den man hovrar över ska vara halvgenomskinliga - animationen, transition, måste också fungera */
-.card-layout:hover {
+.card-layout:hover .card:not(:hover) {
     opacity: 0.4;
+}
+
+.skip-link {
+    position: fixed;
+
+    z-index: 0;
+
+    top: 0;
+    left: 1rem;
+    padding: 1rem 2rem;
+
+    font-size: 1.125rem;
+    text-decoration: underline;
+    text-underline-offset: 0.5em;
+
+    color: black;
+    background-color: white;
+
+    translate: 0 -100%;
+
+    transition: translate 250ms ease-in-out;
+}
+
+.skip-link:focus {
+    translate: 0;
+    z-index: 9999;
 }
 
 
@@ -330,6 +371,7 @@ img {
     /* OBS: margins är en hjälpklass - se den användas med sections i HTML-filerna */
 
     .margins {
+        width: 100%;
         padding-inline: 1.5rem;
     }
 
@@ -338,7 +380,7 @@ img {
     }
 
     .footer-social {
-
+        
     }
 
     .primary-navigation {
@@ -347,20 +389,30 @@ img {
     
     }
     
-    .card-layout {
+    .hero-layout {
         display: block;
     }
 
+    .card-layout {
+        grid-template-columns: 1fr
+    }
+
+    .green-bg {
+        clip-path: polygon(0 0, 100% 5%, 100% 100%, 0 100%);
+    }
 }
 
 
 
 /* TABLET VIEW */
 
-/* @media (width > 480px) and (width < 860px) {
+@media (width > 480px) and (width < 860px) {
 
+        body, section, .green-bg {
+            background-color: red;
+        }
 
-} */
+}
 
 
 
@@ -512,13 +564,42 @@ img {
 }
 
 
+
 @media (max-width: 480px) {
 
     /* om mobilvy visa hamburgerknappen */
     .hamburger-button {
         display: grid;
     }
-}
+ 
+    
+        .primary-navigation {
+            position: fixed;
+            inset: 0;
+            top: 1.4rem;
+    
+            display: flex;
+            justify-content: start;
+            align-items: end;
+            flex-direction: column;
+            
+            padding: 4rem 2rem;
+            
+            background: darkgray;
+            opacity: 0;
+    
+            transform: translateX(100%);
+            transition: transform 250ms ease-in-out,
+                        opacity 250ms ease-in-out;
+        }
+    
+        .primary-navigation.open {
+          transform: translateX(0);
+          opacity: 1;
+       }
+    }
+
+
 
 
 /* detta är för att se till att element som måste finnas för tillgänglighet inte syns - tex. rubriker */
